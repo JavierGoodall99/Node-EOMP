@@ -42,4 +42,4 @@ app.listen(port, () => {
 });
 
 // Mount the error handling middleware on the app
-// app.use(handleErrors);
+app.use(errorHandling);

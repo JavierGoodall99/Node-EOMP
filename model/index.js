@@ -1,11 +1,29 @@
 // Database configuration
-const db = require('../config');
+const database = require('../config');
 
 // bcrypt module
 const {hash, compare, hashSync } = require('bcrypt');
 
 // Middleware for creating a token
 const {createToken} = require('../middleware/AuthenticatedUser');
+
+// // Define the salt rounds
+// const saltRounds = 10;
+
+// // Use the hashSync method to generate a salted hash of the password
+// const saltedPasswordHash = hashSync('password123', saltRounds);
+
+// // Use the compare method to compare a plain text password to a salted hash
+// const isMatch = compare('password123', saltedPasswordHash);
+
+// // Use the hash method to asynchronously generate a salted hash of the password
+// hash('password123', saltRounds, function(err, hash) {
+// if (err) {
+// console.error(err);
+// } else {
+// console.log(hash);
+// }
+// });
 
 
 // User 
@@ -23,7 +41,7 @@ class User {
       `;
   
       // Execute the query and handle the result
-      db.query(strQry, async (err, data) => {
+      database.query(strQry, async (err, data) => {
         if (err) throw err;
         if ((!data.length) || (data == null)) {
           // If no user was found with the given email, return an error
@@ -69,7 +87,7 @@ class User {
       `;
   
       // Send the SQL query to the database to retrieve all users
-      db.query(strQry, (err, data) => {
+      database.query(strQry, (err, data) => {
           if (err) {
               // If an error occurred while retrieving the users, throw the error
               throw err;
@@ -89,7 +107,7 @@ class User {
         WHERE userID = ?;
     `;
     // Execute the query with the user ID as a parameter
-    db.query(strQry, [req.params.id], (err, data) => {
+    database.query(strQry, [req.params.id], (err, data) => {
         if (err) {
             // If there's an error, throw an exception
             throw err;
@@ -117,7 +135,7 @@ async createUser(req, res) {
         SET ?;
     `;
     // Execute the query with user information as a parameter
-    db.query(strQry, [detail], (err) => {
+    database.query(strQry, [detail], (err) => {
         if (err) {
             // If there's an error, return an error message
             res.status(401).json({ err });
@@ -146,7 +164,7 @@ updateUser(req, res) {
         WHERE userID = ?;
         `;
     // Execute the query and update the user record with the given ID
-    db.query(strQry, [data, req.params.id], (err) => {
+    database.query(strQry, [data, req.params.id], (err) => {
         if (err) throw err;
         // Return a success message with status code 200
         res.status(200).json({ msg: "A row was affected" });
@@ -161,7 +179,7 @@ updateUser(req, res) {
     WHERE userID = ?;
     `;
     // Execute the query using the ID parameter passed in the request
-    db.query(strQry,[req.params.id], 
+    database.query(strQry,[req.params.id], 
         (err)=>{
         if(err) throw err;
         // Return a success message indicating that a record was removed from the database
@@ -179,7 +197,7 @@ class Product {
         levels, prodPrice, prodQuantity, imgURL
         FROM products;`;
         // Run the SQL query
-        db.query(strQry, (err, results)=> {
+        database.query(strQry, (err, results)=> {
             if(err) throw err;
             // Return the query results
             res.status(200).json({results: results})
@@ -192,7 +210,7 @@ class Product {
         FROM products
         WHERE id = ?;`;
         // Run the SQL query with a parameterized query
-        db.query(strQry, [req.params.id], (err, results)=> {
+        database.query(strQry, [req.params.id], (err, results)=> {
             if(err) throw err;
             // Return the query results
             res.status(200).json({results: results})
@@ -206,7 +224,7 @@ class Product {
         SET ?;
         `;
         // Run the SQL query with the request body as the data
-        db.query(strQry,[req.body],
+        database.query(strQry,[req.body],
             (err)=> {
                 if(err){
                     // Return an error if the query fails
@@ -228,7 +246,7 @@ class Product {
         WHERE id = ?
         `;
         // Run the SQL query with the request body and product id as parameters
-        db.query(strQry,[req.body, req.params.id],
+        database.query(strQry,[req.body, req.params.id],
             (err)=> {
                 if(err){
                     // Return an error if the query fails
@@ -249,7 +267,7 @@ class Product {
         WHERE id = ?;
         `;
         // Run the SQL query with the product id as a parameter
-        db.query(strQry,[req.params.id], (err)=> {
+        database.query(strQry,[req.params.id], (err)=> {
             if(err) res.status(400).json({err: "The record was not found."});
             // Return a success message if the query succeeds
             res.status(200).json({msg: "A product was deleted."});
