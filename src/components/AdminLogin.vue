@@ -1,6 +1,7 @@
 <template>
   <div class="login-box">
   <p>Login</p>
+  <div v-if="showLogin">
   <form>
     <div class="user-box">
       <input required="" name="" type="email">
@@ -18,11 +19,45 @@
       Submit
     </a>
   </form>
-  <p>Don't have an account? <a href="" class="a2">Sign up!</a></p>
+</div>
+<div v-else>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">userID</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">CellphoneNumber</th>
+      <th scope="col">email</th>
+      <th scope="col">UserRole</th>
+      <th scope="col">UserProfiler</th>
+      <th scope="col">JoinDate</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">ProdName</th>
+      <th scope="col">ProdDescription</th>
+      <th scope="col">Category</th>
+      <th scope="col">price</th>
+      <th scope="col">prodQuantity</th>
+      <th scope="col">prodImage</th>
+      <th scope="col">userID</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
 </div>
 </template>
-
-
 <style>
 .login-box {
   position: absolute;
@@ -34,7 +69,7 @@
   transform: translate(-50%, -55%);
   background: rgba(0,0,0,.9);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 0 15px 25px purple;
   border-radius: 10px;
 }
 
@@ -79,7 +114,7 @@
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #fff;
+  color: purple;
   font-size: 12px;
 }
 
@@ -114,7 +149,7 @@
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #fff);
+  background: linear-gradient(90deg, transparent, #710865);
   animation: btn-anim1 1.5s linear infinite;
 }
 
@@ -133,7 +168,7 @@
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #fff);
+  background: linear-gradient(180deg, transparent, #350878);
   animation: btn-anim2 1.5s linear infinite;
   animation-delay: .375s
 }
@@ -153,7 +188,7 @@
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, #fff);
+  background: linear-gradient(270deg, transparent, #56074e);
   animation: btn-anim3 1.5s linear infinite;
   animation-delay: .75s
 }
@@ -207,5 +242,18 @@
 
 <script>
 export default {
+  data () {
+    return {
+      showLogin: true
+      // other data properties
+    }
+  },
+  methods: {
+    onSubmit () {
+      // handle login form submission here
+      this.showLogin = false // hide login form and show tables
+    }
+    // other methods
+  }
 }
 </script>

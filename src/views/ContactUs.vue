@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <h2>Checkout for the hottest NFT's</h2>
+    <h2>Reach Out to us</h2>
   </div>
 </template>
 <script>

@@ -12,23 +12,25 @@ const routes = [
     name: 'admin',
 
     component: () => import('../views/AdminView.vue')
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../views/ContactUs.vue')
+  },
+  {
+    path: '/products',
+    name: 'products',
+    component: () => import('../views/ProductsView.vue')
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('../views/AboutView.vue')
   }
-  // },
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: () => import('../views/LoginView.vue')
-  // },
-  // {
-  //   path: '/registration',
-  //   name: 'registration',
-  //   component: () => import('../views/RegistrationView.vue')
-  // }
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
 export default router

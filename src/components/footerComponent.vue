@@ -13,7 +13,6 @@
 </template>
 <script>
 export default {
-
 }
 </script>
 <style>
@@ -33,7 +32,6 @@ footer p{
     text-align: center;
     padding-bottom: 25px;
     color: #4b4c4d;
-
 }
 .footer .social a {
     font-size: 24px;
@@ -47,10 +45,11 @@ footer p{
     border-radius: 50%;
     margin: 0 8px;
     opacity:0.75 ;
-
 }
 .footer .social a:hover{
     opacity: 0.9;
 }
-
+footer b{
+  color: blueviolet;
+}
 </style>
