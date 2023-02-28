@@ -12,7 +12,7 @@ const { createToken } = require("../middleware/AuthenticatedUser");
 // User
 class User {
   // This method is responsible for authenticating a user
-  SignUp(req, res) {
+  SignIn(req, res) {
     // Extract the email and password from the request body
     const { emailAdd, userPass } = req.body;
 

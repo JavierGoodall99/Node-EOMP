@@ -22,9 +22,9 @@ route.get("^/$|/DigitalDawn", (req, res) => {
 // Set up the routes for the user endpoints
 // Login route
 route.post("/login", bodyParser.json(), (req, res) => {
-  user.SignUp(req, res);
+  user.SignIn(req, res);
 });
-// Fetch all users route
+// Retrieve all users route
 route.get("/users", (req, res) => {
   user.retrieveUsers(req, res);
 });
