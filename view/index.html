@@ -4,66 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Home</title>
 </head>
 <body>
-    <h2>Route Description</h2>
-    <table>
-        <tr>
+  <div class="container mt-5">
+    <h2 class="text-center mb-5">Route Description</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
             <th>Method</th>
             <th>Path</th>
             <th>Description</th>
-        </tr>
-        <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Home</td>
+            <td>/</td>
+            <td>GET</td>
+          </tr>
+          <tr>
             <td>SignUp</td>
             <td>/login</td>
             <td>POST User</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>RetrieveUsers</td>
             <td>/users</td>
             <td>GET all Users</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>updateUser</td>
             <td>/users/:id</td>
-            <td>PUT  a User</td>
-        </tr>
-        <tr>
+            <td>PUT a User</td>
+          </tr>
+          <tr>
             <td>register</td>
             <td>/register</td>
             <td>POST a User</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>deleteUser</td>
             <td>/user/:id</td>
             <td>DELETE a User</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>RetrieveProducts</td>
             <td>/products</td>
             <td>GET all Products</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>RetrieveProducts</td>
             <td>/products/:id</td>
             <td>GET one Product</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>AddProduct</td>
             <td>/products</td>
             <td>POST Products</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>UpdateProduct</td>
             <td>/products/:id</td>
             <td>PUT Product</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>DeleteProduct</td>
             <td>/products/:id</td>
             <td>DELETE a Product</td>
-        </tr>
-    </table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
+
 </html>
