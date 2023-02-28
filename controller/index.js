@@ -22,11 +22,15 @@ route.get("^/$|/DigitalDawn", (req, res) => {
 // Set up the routes for the user endpoints
 // Login route
 route.post("/login", bodyParser.json(), (req, res) => {
-  user.login(req, res);
+  user.SignUp(req, res);
 });
 // Fetch all users route
 route.get("/users", (req, res) => {
-  user.fetchUsers(req, res);
+  user.retrieveUsers(req, res);
+});
+// Fetch single user route
+route.get("/user/:id", (req, res) => {
+  user.retrieveUser(req, res);
 });
 // Update user route
 route.put("/user/:id", bodyParser.json(), (req, res) => {
@@ -34,7 +38,7 @@ route.put("/user/:id", bodyParser.json(), (req, res) => {
 });
 // Create user route
 route.post("/register", bodyParser.json(), (req, res) => {
-  user.createUser(req, res);
+  user.register(req, res);
 });
 // Delete user route
 route.delete("/user/:id", (req, res) => {
@@ -44,11 +48,11 @@ route.delete("/user/:id", (req, res) => {
 // Set up the routes for the product endpoints
 // Fetch all products route
 route.get("/products", (req, res) => {
-  product.fetchProducts(req, res);
+  product.retrieveProducts(req, res);
 });
 // Fetch single product route
 route.get("/product/:id", (req, res) => {
-  product.fetchProduct(req, res);
+  product.retrieveProduct(req, res);
 });
 // Create product route
 route.post("/product", bodyParser.json(), (req, res) => {

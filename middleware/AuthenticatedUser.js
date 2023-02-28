@@ -3,22 +3,19 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config(); // Load environment variables from a .env file
 
 // Function to create a token using a user object
-function createToken(user) {
-  // Sign the user's email and password with a secret key and set expiration time to 1 hour
-  const token = jwt.sign({
-    email: user.email,
-    password: user.password
-  }, process.env.SECRET_KEY, {
-    expiresIn: '1h'
-  });
-  return token;
-}
+const createToken = (user) =>
+  jwt.sign(
+    { email: user.email, password: user.password },
+    process.env.SECRET_KEY,
+    { expiresIn: '1h' }
+  );
 
 // Middleware function to verify an authentication token
-function verifyToken(req, res, next) {
+const verifyToken = (req, res, next) => {
   // Get the authentication token from a cookie named "LegitUser"
-  const token = req.cookies["LegitUser"];
-  if (!token) { // If the token is not present in the request, return an error message
+  const token = req.cookies['LegitUser'];
+  if (!token) {
+    // If the token is not present in the request, return an error message
     res.status(401).json({ error: 'Please register' });
     return;
   }
@@ -32,7 +29,7 @@ function verifyToken(req, res, next) {
     // If the token is invalid, return an error message
     res.status(401).json({ error: 'Invalid token' });
   }
-}
+};
 
 // Export the functions for use in other modules
 module.exports = { createToken, verifyToken };
