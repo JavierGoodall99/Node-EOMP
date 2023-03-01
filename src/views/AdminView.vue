@@ -1,19 +1,16 @@
-
-import AdminLogin from '@/components/AdminLogin.vue';
-
 <template>
   <div>
-    <AdminLogin/>
-    <UpdateProduct/>
+    <UserProfile/> <br> <br>
+    <ProductProfile/>
   </div>
 </template>
 <script>
-import AdminLogin from '@/components/AdminLogin.vue'
-import UpdateProduct from '@/components/UpdateProduct.vue'
+import ProductProfile from '@/components/ProductProfile.vue'
+import UserProfile from '@/components/UserProfile.vue'
 export default {
   components: {
-    AdminLogin,
-    UpdateProduct
+    UserProfile,
+    ProductProfile
   }
 }
 </script>

@@ -1,21 +1,32 @@
 <template>
   <div class="container-fluid">
-      <h1>USER CRUD</h1>
+      <h1>Product CRUD</h1>
       <div class="search-bar">
-          <input type="text" placeholder="Search User..." />
+          <input type="text" placeholder="Search NFT..." />
           <button>Search</button>
         </div>
-      <table class="table table-striped table-hover">
+        <br>
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Sort By
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li><a class="dropdown-item active" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div><br>
+      <table class="table table-striped table-hover text-center">
           <thead class="tableHead text-white">
               <tr>
-                  <th>Name</th>
+                  <th>Product Name</th>
 
-                  <th>Surname</th>
-                  <th>Gender</th>
-                  <th>Email Address</th>
-                  <th>Cell Number</th>
-                  <th>User Profile</th>
-                  <th>Join Date</th>
+                  <th>Product Description</th>
+                  <th>Category</th>
+                  <th>Product Quantity</th>
+                  <th>Product Image</th>
                   <th>Edit & Del</th>
               </tr>
           </thead>
@@ -31,7 +42,7 @@ Edit
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="editExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
@@ -39,10 +50,40 @@ Edit
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <input class="form-control text-center newExpenseName" type="text" placeholder="New Name" required>
+      <form>
+    <div class="user-box">
+      <input required="" name="" type="text">
+      <label>Product Name</label>
+    </div>
+    <div class="user-box">
+      <input required="" name="" type="text">
+      <label>Product Description</label>
+    </div>
+    <div class="user-box">
+      <input required="" name="" type="text">
+      <label>Category</label>
+    </div>
+    <div class="user-box">
+      <input required="" name="" type="decimal">
+      <label>Category</label>
+    </div>
+    <div class="user-box">
+      <input required="" name="" type="number">
+      <label>Product Quantity</label>
+    </div>
+    <div class="user-box">
+      <input required="" name="" type="text">
+      <label>Product Image</label>
+    </div>
 
-      <input class="form-control text-center newExpenseAmount" type="number" placeholder="New Amount" required>
-
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -66,46 +107,34 @@ ADD USER
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="expenseModalLabel">Add the User</h1>
+      <h1 class="modal-title fs-5" id="expenseModalLabel">Add product</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
       <form>
-      <div class="user-box">
+    <div class="user-box">
       <input required="" name="" type="text">
-      <label>First Name</label>
+      <label>Product Name</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="text">
-      <label>Surname</label>
+      <label>Product Description</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="text">
-      <label>Gender</label>
+      <label>Category</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="decimal">
-      <label>Cell Number</label>
+      <label>Category</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="number">
-      <label>Email Address</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="number">
-      <label>User Password</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="number">
-      <label>Role</label>
+      <label>Product Quantity</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="text">
-      <label>User Profile</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="number">
-      <label>Join Date</label>
+      <label>Product Image</label>
     </div>
 
     <a href="#">
@@ -118,8 +147,8 @@ ADD USER
   </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" v-on:click="addExpense">Save changes</button>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-success" data-bs-dismiss="modal" v-on:click="addExpense">Save changes</button>
     </div>
   </div>
 </div>
