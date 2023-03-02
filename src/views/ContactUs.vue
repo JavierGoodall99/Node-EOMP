@@ -1,53 +1,51 @@
 <template>
-  <section class="head pb-5" id="Contact">
-    <div class="container py-5">
-      <div class="card1">
-        <div class="card-bodyContact">
-          <h1 class="font-weight-light text-center py-5">Contact Us</h1>
-          <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-              <div class="row pt-3">
-              </div>
-              <div class="row pt-3">
-                <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-2">
-                  <img src="https://i.postimg.cc/d1y60vMZ/CEO.jpg" alt="Call Us" class="rounded-circle" width="90" height="90" />
+  <section class="contact" id="Contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <div class="card shadow-lg">
+            <div class="card-body">
+              <h2 class="font-weight-bold text-center text-black mb-5">Contact Us</h2>
+              <form action="https://formspree.io/f/xpzerlyo" method="post">
+                <div class="form-group">
+                  <label for="firstName" class="text-black">First Name</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="firstName" required>
                 </div>
-                <div class="col-lg-10 col-md-9 col-sm-9 col-9">
-                  <h5 class="font-weigh-light text-white-50"><b>Mkhuseli Mkeyiya</b></h5>
-                  <p class="text-white">+27 68 522 8188</p>
-                  <p class="text-white">17mkhuselimkeyiya@gmail.com</p>
+                <div class="form-group">
+                  <label for="lastName" class="text-black">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="lastName" required>
                 </div>
-              </div>
-              <div class="row pt-3">
-                <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-2">
-                  <img src="https://i.postimg.cc/x11PzLD2/janator.jpg" alt="Email" class="rounded-circle" width="90" height="90" />
+                <div class="form-group">
+                  <label for="email" class="text-black">Email address</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email" name="EmailAddress" required>
                 </div>
-                <div class="col-lg-10 col-md-9 col-sm-9 col-9">
-                  <h5 class="font-weight-light text-white-50"><b>Javier Goodall</b></h5>
-                  <p class="text-white">+27 84 290 9844</p>
-                  <p class="text-white">javiergoodall@outlook.com</p>
+                <div class="form-group">
+                  <label for="message" class="text-black">Your Message</label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" name="Message"></textarea>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-              <form action="https://formspree.io/f/mqkjgnln" method="post">
-                <div class="form-row">
-                  <div class="form-group col-lg-6 col-md-12 col-sm-12 col-12">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" name="firstName">
-                  </div>
-                  <div class="form-group col-lg-6 col-md-12 col-sm-12 col-12">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name" name="lastName">
-                  </div>
-                </div>
-                <label>Email</label>
-                <input type="email" placeholder="someone@gmail.com" class="form-control" name="EmailAddres">
-                <label>Your Message</label>
-                <textarea class="form-control mb-3" id="" placeholder="Enter your message" cols="30" rows="10"
-                  name="Message"></textarea>
-                <button class="btn">Send Message</button>
+                <button type="submit" class="btn btn-primary mt-3">Send Message</button>
               </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-6 mt-5 mt-md-0">
+          <div class="card shadow-lg">
+            <div class="card-body text-center">
+              <h2 class="font-weight-bold text-black mb-4">Contact Information</h2>
+              <div class="row">
+                <div class="col-12 mb-4">
+                  <img src="https://i.postimg.cc/d1y60vMZ/CEO.jpg" alt="Call Us" class="rounded-circle mx-auto" width="100" height="100" />
+                  <h5 class="font-weight-bold text-black mt-3">Mkhuseli Mkeyiya</h5>
+                  <p class="text-black mb-0">+27 68 522 8188</p>
+                  <p class="text-black">17mkhuselimkeyiya@gmail.com</p>
+                </div>
+                <div class="col-12">
+                  <img src="https://i.postimg.cc/x11PzLD2/janator.jpg" alt="Email" class="rounded-circle mx-auto" width="100" height="100" />
+                  <h5 class="font-weight-bold text-black mt-3">Javier Goodall</h5>
+                  <p class="text-black mb-0">+27 84 290 9844</p>
+                  <p class="text-black">javiergoodall@outlook.com</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -61,32 +59,121 @@ export default {}
 </script>
 
 <style>
-.head{
-    background-color: black;
-    background-size: 100% 100%;
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inconsolata&display=swap');
+
+#Contact {
+  font-family: 'Fjalla One', sans-serif;
+  background: linear-gradient(to bottom, #4b0082, #000000);
+  /* width: 1505px; */
 }
-.card-bodyContact{
-    background-color:  #4b0082;
+
+.contact {
+  background-color: #f8f9fa;
+  padding: 50px 0;
 }
-.btn {
-background: black;
-padding: 10px 18px;
-text-decoration: none;
-font-weight: bold;
+
+.card {
+  border-radius: 15px;
+  border: none;
+  transition: all 0.3s;
+
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card1 {
+background-color: #4b0082;
+border-radius: 15px;
+border: none;
+transition: all 0.3s;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-bodyContact {
+padding: 50px;
+}
+
+h1 {
+font-size: 48px;
+color: #ffffff;
+font-weight: 500;
+margin-bottom: 30px;
+}
+
+h5 {
+font-size: 24px;
+color: #ffffff;
+font-weight: 300;
+margin-bottom: 15px;
+}
+
+label {
+font-size: 20px;
 color: #4b0082;
-display: inline-block;
-margin: 30px 0;
+font-weight: 500;
+margin-bottom: 5px;
+}
+
+.form-control {
 border-radius: 5px;
+border: none;
+background-color: #4c008225;
+padding: 10px 20px;
+color: #4b0082;
+font-size: 18px;
+font-weight: 300;
+margin-bottom: 30px;
+}
+
+.form-control:focus {
+box-shadow: none;
+border-color: #4b0082;
+}
+
+textarea.form-control {
+height: 150px;
+resize: none;
+}
+
+.btn {
+background-color: #4b0082;
+border: none;
+cursor: pointer;
+padding: 15px 30px;
+color: #ffffff;
+font-size: 18px;
+font-weight: 500;
+border-radius: 5px;
+transition: all 0.3s;
+}
+
+.btn:hover {
+background-color: #ffffff;
+color: #4b0082;
+}
+
+.rounded-circle {
+border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+h1 {
+font-size: 36px;
+}
+.card-bodyContact {
+padding: 30px;
+}
+h5 {
+font-size: 18px;
+}
+label {
+font-size: 18px;
+}
+.form-control {
+font-size: 16px;
 }
 .btn {
-    background-color:black;
-    border: 2px solid black;
-    cursor: pointer;
+font-size: 16px;
+padding: 12px 24px;
 }
-.btn:hover{
-    color: #4b0082;
-    background: black;
-    transform: scale(1.1);
-    border: 2px solid black;
 }
 </style>

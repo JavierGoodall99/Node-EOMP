@@ -1,10 +1,18 @@
 <template>
+  <div class="spinner-container">
   <div class="spinner">
   <div class="spinner1">
   </div>
 </div>
+</div>
 </template>
 <style>
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* adjust the height to fit your page */
+}
 .spinner {
 background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));
 width: 100px;

@@ -38,7 +38,7 @@ footer p{
     color: inherit;
     border: 1px solid black;
     width: 40px;
-    height: 40px;
+    height: 20px;
     line-height: 38px;
     display: inline-block;
     text-align: center;

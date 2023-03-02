@@ -6,18 +6,6 @@
           <button>Search</button>
         </div>
         <br>
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Sort By
-  </button>
-  <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item active" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div><br>
       <table class="table table-striped table-hover text-center">
           <thead class="tableHead text-white">
               <tr>
@@ -32,9 +20,6 @@
           </thead>
           <tbody>
               <tr v-for="expense in userExpense" :key="expense">
-                  <td>{{ expense.name }}</td>
-
-                  <td>R{{ expense.amount }}</td>
                   <td><div class="btn-group">
                    <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editExpenseModal">
@@ -46,7 +31,7 @@ Edit
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Edit This User:</h1>
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Product:</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
@@ -99,7 +84,7 @@ Edit
       </table>
       <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#expenseModal">
-ADD USER
+ADD Product
 </button>
 
 <!-- Modal -->
@@ -148,7 +133,7 @@ ADD USER
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-success" data-bs-dismiss="modal" v-on:click="addExpense">Save changes</button>
+      <button type="button" class="btn btn-success" data-bs-dismiss="modal">Save changes</button>
     </div>
   </div>
 </div>
@@ -345,6 +330,33 @@ padding: 0 10px;
 </style>
 
 <script>
+import router from '@/router'
+
 export default {
+  setup () {
+    // eslint-disable-next-line no-undef
+    const store = bStoreURL()
+    const payload = {
+      prodName: '',
+      ProdDescription: '',
+      category: '',
+      price: '',
+      prodQuantity: '',
+      imgURL: '',
+      userID: ''
+    }
+    const addProduct = () => {
+      store.dispatch('addProduct', payload)
+      router.push({ name: 'home' })
+    }
+    // eslint-disable-next-line no-undef
+    const userMessage = computed(() => store.state.message)
+
+    return {
+      payload,
+      addProduct,
+      userMessage
+    }
+  }
 }
 </script>

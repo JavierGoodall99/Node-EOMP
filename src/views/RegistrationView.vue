@@ -1,33 +1,37 @@
 <template>
 <div class="login-box">
   <p>REGISTER</p>
-  <form class="form" @submit.prevent="signUp">
+  <form class="form" id="login-form" @submit.prevent="signUp">
     <div class="user-box">
-      <input required="" name="" type="text">
+      <input required v-model="payload.firstName" name="" type="text">
       <label>First Name</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="text">
+      <input required v-model="payload.lastName" name="" type="text">
       <label>Last Name</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="text">
+      <input required v-model="payload.gender" name="" type="text">
       <label>Gender</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="email">
+      <input required v-model="payload.cellphoneNumber" name="" type="text">
+      <label>Cellphone Number</label>
+    </div>
+    <div class="user-box">
+      <input required v-model="payload.userProfile" name="" type="email">
       <label>Image</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="text">
+      <input required v-model="payload.emailAdd" name="" type="text">
       <label>Email</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="password">
+      <input required v-model="payload.userPass" name="" type="password">
       <label>Password</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="date">
+      <input required v-model="payload.joinDate" name="" type="date">
       <label></label>
     </div>
     <span></span>
@@ -40,195 +44,13 @@
   </form>
   <p>Have an account? <a href="" class="a2">Login!</a></p>
 </div>
-
-  <!-- <pre>{{ this.payload }}</pre>
-  <div class="container-fluid">
-      <div class="row">
-          <h2 class="display-2">Registration</h2>
-      </div>
-      <div class="row">
-          <div class="col">
-              <form class="form" @submit.prevent="signUp">
-                  <div class="form-control-wrapper">
-                  <span class="inline">
-                    <input class="form-control" type="text" placeholder="Firstname" required v-model="payload.firstName"/>
-                    <i class="bi bi-person"></i>
-                  </span>
-                </div>
-                <div class="form-control-wrapper">
-                    <span class="inline">
-                      <input type="text" class="form-control" placeholder="Lastname" v-model="payload.lastName">
-                      <i class="bi bi-person"></i>
-                    </span>
-                </div>
-                <div class="form-control-wrapper">
-                    <span class="inline">
-                      <input type="text" class="form-control" placeholder="Gender" v-model="payload.gender">
-                      <i class="bi bi-person-fill"></i>
-                    </span>
-                </div>
-                <div class="form-control-wrapper">
-                    <span class="inline">
-                      <input type="text" class="form-control" placeholder="Cellphone" v-model="payload.cellphoneNumber" maxlength="12">
-                      <i class="bi bi-telephone-fill"></i>
-                    </span>
-                </div>
-                <div class="form-control-wrapper">
-                    <span class="inline">
-                      <input type="email" class="form-control" placeholder="Email" v-model="payload.emailAdd">
-                      <i class="bi bi-envelope"></i>
-                    </span>
-                </div>
-                <div class="form-control-wrapper">
-                    <span class="inline">
-                      <input type="password" class="form-control" placeholder="Password" v-model="payload.userPass">
-                      <i class="bi bi-person-fill"></i>
-                    </span>
-                </div>
-                <div class="form-control-wrapper">
-                    <span class="inline">
-                      <input type="text" class="form-control" placeholder="Profile URL" v-model="payload.userProfile">
-                      <i class="bi bi-link"></i>
-                    </span>
-                </div>
-                <div class="form-control-wrapper">
-                    <span class="inline">
-                      <input type="date" class="form-control" placeholder="Joined Date" v-model="payload.joinDate">
-                    </span >
-                </div>
-                <div class="form-control-wrapper">
-                  <label class="form-control bg-gradient" v-show="userMsg">{{userMsg}}</label>
-                </div>
-                <div class="form-control-wrapper">
-                  <button type="submit" class="btn btn-success w-100">Register</button>
-                </div>
-            </form>
-          </div>
-      </div>
-  </div> -->
 </template>
-<!--<div class="container-fluid">
-  <div class="row">
-          <h2 class="display-2">Registration</h2>
-      </div>
-  <form class="form" @submit.prevent="signUp">
-      <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.firstName" type="text">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-    <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.lastName" type="text">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-    <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.gender" type="text">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-    <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.cellphoneNumber" type="text" maxlength="12">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-    <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.emailAdd" type="text">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-    <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.userPass" type="password">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-    <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.userProfile" type="text">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-     <div class="user-box">
-        <div class="form-control-wrapper">
-          <span class="inline">
-      <input class="form-control" required v-model="payload.userProfile" type="date">
-      <label>First Name</label>
-      <i class="bi bi-person"></i>
-        </span>
-      </div>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="number">
-      <label>Join Date</label>
-    </div>
-
-    <div class="form-control-wrapper">
-                  <button type="submit" class="btn btn-success w-100">Register</button>
-                </div>
-  </form>
-</div> -->
-<script>
-import { computed } from '@vue/runtime-core'
-import { useStore } from 'vuex'
-export default {
-  setup () {
-    const payload = {
-      firstName: '',
-      lastName: '',
-      gender: '',
-      cellphoneNumber: '',
-      emailAdd: '',
-      userPass: '',
-      userProfile: '',
-      joinDate: ''
-    }
-    const store = useStore()
-    const signUp = () => {
-      store.dispatch('registration', payload)
-      store.dispatch('fetchUsers')
-    }
-    const userMsg =
-    computed(() => store.state.message)
-    return {
-      payload,
-      userMsg,
-      signUp
-    }
-  }
-}
-</script>
 <style scoped>
 .login-box {
   position: absolute;
   top: 65%;
   left: 50%;
+  height: 45rem;
   width: 400px;
   padding: 40px;
   margin: 20px auto;
@@ -298,7 +120,6 @@ export default {
   margin-top: 40px;
   letter-spacing: 3px
 }
-
 .login-box a:hover {
   background: #fff;
   color: #272727;
@@ -400,8 +221,39 @@ export default {
 }
 
 .login-box a.a2:hover {
-  background: transparent;
-  color: #64055c;
+  background: #64055c;
+  color: white;
   border-radius: 5px;
 }
 </style>
+
+<script>
+import { computed } from '@vue/runtime-core'
+import { useStore } from 'vuex'
+export default {
+  setup () {
+    const payload = {
+      firstName: '',
+      lastName: '',
+      gender: '',
+      cellphoneNumber: '',
+      emailAdd: '',
+      userPass: '',
+      userProfile: '',
+      joinDate: ''
+    }
+    const store = useStore()
+    const signUp = () => {
+      store.dispatch('registration', payload)
+      store.dispatch('fetchUsers')
+    }
+    const userMsg =
+    computed(() => store.state.message)
+    return {
+      payload,
+      userMsg,
+      signUp
+    }
+  }
+}
+</script>

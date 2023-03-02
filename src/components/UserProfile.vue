@@ -20,7 +20,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr v-for="expense in userExpense" :key="expense">
+              <tr v-for="user in addUser" :key="user">
                   <td>{{ expense.name }}</td>
 
                   <td>R{{ expense.amount }}</td>
@@ -210,12 +210,10 @@ padding: 0 10px;
   color: #272727;
   border-radius: 5px;
 }
-
 .login-box a span {
   position: absolute;
   display: block;
 }
-
 .login-box a span:nth-child(1) {
   top: 0;
   left: -100%;
@@ -224,7 +222,6 @@ padding: 0 10px;
   background: linear-gradient(90deg, transparent, #fff);
   animation: btn-anim1 1.5s linear infinite;
 }
-
 @keyframes btn-anim1 {
   0% {
     left: -100%;
@@ -234,7 +231,6 @@ padding: 0 10px;
     left: 100%;
   }
 }
-
 .login-box a span:nth-child(2) {
   top: -100%;
   right: 0;
@@ -244,7 +240,6 @@ padding: 0 10px;
   animation: btn-anim2 1.5s linear infinite;
   animation-delay: .375s
 }
-
 @keyframes btn-anim2 {
   0% {
     top: -100%;
@@ -254,7 +249,6 @@ padding: 0 10px;
     top: 100%;
   }
 }
-
 .login-box a span:nth-child(3) {
   bottom: 0;
   right: -100%;
@@ -264,7 +258,6 @@ padding: 0 10px;
   animation: btn-anim3 1.5s linear infinite;
   animation-delay: .75s
 }
-
 @keyframes btn-anim3 {
   0% {
     right: -100%;
@@ -274,7 +267,6 @@ padding: 0 10px;
     right: 100%;
   }
 }
-
 .login-box a span:nth-child(4) {
   bottom: -100%;
   left: 0;
@@ -284,7 +276,6 @@ padding: 0 10px;
   animation: btn-anim4 1.5s linear infinite;
   animation-delay: 1.125s
 }
-
 @keyframes btn-anim4 {
   0% {
     bottom: -100%;
@@ -294,7 +285,6 @@ padding: 0 10px;
     bottom: 100%;
   }
 }
-
 .login-box p:last-child {
   color: #aaa;
   font-size: 14px;
@@ -316,6 +306,36 @@ padding: 0 10px;
 </style>
 
 <script>
+import router from '@/router'
+
 export default {
+  setup () {
+    // eslint-disable-next-line no-undef
+    const store = bStoreURL()
+    const payload = {
+      firstName: '',
+      lastName: '',
+      gender: '',
+      cellphoneNumber: '',
+      emailAdd: '',
+      userPass: '',
+      userRole: '',
+      userProfile: '',
+      joinDate: ''
+
+    }
+    const addUser = () => {
+      store.dispatch('addUser', payload)
+      router.push({ name: 'home' })
+    }
+    // eslint-disable-next-line no-undef
+    const userMessage = computed(() => store.state.message)
+
+    return {
+      payload,
+      addUser,
+      userMessage
+    }
+  }
 }
 </script>
