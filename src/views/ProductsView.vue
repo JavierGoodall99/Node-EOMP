@@ -1,15 +1,10 @@
 <template>
   <div class="container-fluid">
-    <h2>Checkout for the hottest NFT's</h2>
+    <h2>MARKETPLACE</h2>
   </div>
   <div class="wrapper">
     <div id="search-container">
       <div class="col-lg-5 m-auto text-center">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search products"
-        /><br /><br />
         <div class="buttons">
           <button
             :class="{ active: activeFilter === 'all' }"
@@ -18,26 +13,26 @@
             All
           </button>
           <button
-            :class="{ active: activeFilter === 'abstract' }"
-            @click="filterProducts('abstract')"
+            :class="{ active: activeFilter === 'Abstract' }"
+            @click="filterProducts('Abstract')"
           >
             ABSTRACT
           </button>
           <button
-            :class="{ active: activeFilter === 'animation' }"
-            @click="filterProducts('animation')"
+            :class="{ active: activeFilter === 'Animation' }"
+            @click="filterProducts('Animation')"
           >
             ANIMATION
           </button>
           <button
-            :class="{ active: activeFilter === 'crystal' }"
-            @click="filterProducts('crystal')"
+            :class="{ active: activeFilter === 'Crystals' }"
+            @click="filterProducts('Crystals')"
           >
             CRYSTAL
           </button>
           <button
-            :class="{ active: activeFilter === 'sunset' }"
-            @click="filterProducts('sunset')"
+            :class="{ active: activeFilter === 'Sunset' }"
+            @click="filterProducts('Sunset')"
           >
             SUNSET
           </button>
@@ -45,12 +40,7 @@
       </div>
     </div>
 
-    <div
-      class="card"
-      v-for="prod in products"
-      :key="prod.id"
-      style="width: 18rem"
-    >
+    <div class="card" v-for="prod in filteredProducts" :key="prod.id" style="width: 18rem">
       <img :src="prod.imgURL" class="card-img-top" :alt="prod.name" />
       <div class="card-body">
         <p class="card-text">{{ prod.prodName }}</p>
@@ -108,31 +98,23 @@ export default {
   }
 }
 </script>
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inconsolata&display=swap');
+
+.container-fluid {
+  font-family: 'Fjalla One', sans-serif;
+}
 .wrapper {
   width: 95%;
   margin: 0 auto;
-  background: linear-gradient(to bottom, #dbc9e8, #000000);
+  background: linear-gradient(to bottom, #4b0082, #000000);
 }
 
 #search-container {
   margin: 1em 0;
+  padding-top: 50px;
 }
-
-#search-container input {
-  background-color: transparent;
-  width: 40%;
-  border-bottom: 2px solid black;
-  padding: 1em 0.3em;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-
-#search-container input:focus {
-  border: #4b0082;
-}
-
 #search-container input:hover {
   border-bottom-color: #4b0082;
 }
@@ -140,9 +122,9 @@ export default {
 .buttons button {
   padding: 1em 2.2em;
   background-color: transparent;
-  border: 2px solid #4b0082;
+  border: 2px solid #fefdff;
   border-radius: 50px;
-  color: #4b0082;
+  color: #ffffff;
   cursor: pointer;
   font-size: large;
   text-align: center;
@@ -151,7 +133,7 @@ export default {
 }
 .buttons button:hover {
   border: none;
-  background-color: #4b0082;
+  background-color: #000000;
   color: white;
 }
 .active {
@@ -161,5 +143,13 @@ export default {
 .card {
   margin-top: 2em;
   display: inline-flex;
+  width: 18rem;
+  margin: 1rem;
+}
+
+.card-img-top {
+  width: 286px;
+  height: 300px;
+  object-fit: cover;
 }
 </style>
