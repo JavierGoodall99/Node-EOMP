@@ -68,7 +68,7 @@ export default createStore({
       }
     },
     async registration (context, payload) {
-      const res = await axios.post(`${bStoreURL}registration`, payload)
+      const res = await axios.post(`${bStoreURL}register`, payload)
       const { msg, err } = await res.data
       if (msg) {
         context.commit('setUser', msg)

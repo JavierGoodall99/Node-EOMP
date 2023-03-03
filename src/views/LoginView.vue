@@ -23,110 +23,73 @@
 </template>
 
 <style scoped>
-.login-box {
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  margin: 20px auto;
-  transform: translate(-50%, -55%);
-  background: rgba(0, 0, 0, 0.9);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgb(15, 0, 17);
-  border-radius: 10px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inconsolata&display=swap');
 
-.login-box p:first-child {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
+body {
+  background: linear-gradient(to bottom, #4b0082, #000000);
+    }
 
-.login-box .user-box {
-  position: relative;
-}
+    label{
+      color: black;
+    }
 
-.login-box .user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
-}
+    .login-box {
+      width: 500px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      font-family: 'Fjalla One', sans-serif;
+    }
 
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  pointer-events: none;
-  transition: .5s;
-}
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #9d0b91;
-  font-size: 12px;
-}
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  font-weight: bold;
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 3px
-}
-.login-box a:hover {
-  background: #fff;
-  color: #272727;
-  border-radius: 5px;
-}
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-.login-box a span {
-  position: absolute;
-  display: block;
-}
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
 
-.login-box a span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #fff);
-  animation: btn-anim1 1.5s linear infinite;
-}
+    input[type="radio"] {
+      display: inline-block;
+      width: auto;
+    }
 
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4b0082;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-  50%,100% {
-    left: 100%;
-  }
-}
-
-</style>
+    .btn:hover {
+      background-color: black;
+    }
+    </style>
 
 <script>
 import { computed } from '@vue/runtime-core'

@@ -257,3 +257,150 @@ export default {
   }
 }
 </script>
+<!-- <template>
+  <div class="registration-form">
+    <h2 class="text-black">Registration</h2>
+    <form>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" v-model="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" v-model="lastName">
+      </div>
+      <div class="form-group">
+        <label for="gender" class="text-black">Gender</label>
+        <select class="form-control" id="gender" v-model="gender">
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+           <option value="other">Other</option> -->
+        <!-- </select>
+      </div>
+      <div class="form-group">
+        <label for="cellphoneNumber">Cellphone Number</label>
+        <input type="text" class="form-control" id="cellphoneNumber" v-model="cellphoneNumber">
+      </div>
+      <div class="form-group">
+        <label for="emailAdd">Email Address</label>
+        <input type="email" class="form-control" id="emailAdd" v-model="emailAdd">
+      </div>
+      <div class="form-group">
+        <label for="userPass">Password</label>
+        <input type="password" class="form-control" id="userPass" v-model="userPass">
+      </div>
+      <div class="form-group">
+        <label for="userRole">User Role</label>
+        <select class="form-control" id="userRole" v-model="userRole">
+          <option value="">Select user role</option>
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="userProfile">User Profile</label>
+        <input type="text" class="form-control" id="userProfile" v-model="userProfile">
+      </div>
+      <div class="form-group">
+        <label for="joinDate">Join Date</label>
+        <input type="date" class="form-control" id="joinDate" v-model="joinDate">
+      </div>
+      <button type="submit" class="btn btn-primary" @click.prevent="registerUser">Register</button>
+    </form>
+  </div>
+</template> -->
+
+<!-- <script>
+export default {
+  name: 'RegistrationForm',
+
+  data () {
+    return {
+      firstName: '',
+      lastName: '',
+      gender: '',
+      cellphoneNumber: '',
+      emailAdd: '',
+      userPass: '',
+      userRole: '',
+      userProfile: '',
+      joinDate: ''
+    }
+  },
+
+  methods: {
+    registerUser () {
+    }
+  }
+}
+</script> -->
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inconsolata&display=swap');
+
+body {
+  background: linear-gradient(to bottom, #4b0082, #000000);
+    }
+
+    label{
+      color: black;
+    }
+
+    .registration-form {
+      width: 500px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      font-family: 'Fjalla One', sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    input[type="radio"] {
+      display: inline-block;
+      width: auto;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4b0082;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: black;
+    }
+    </style> -->

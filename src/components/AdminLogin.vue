@@ -1,17 +1,16 @@
 <template>
   <div class="login-box">
   <p>Login</p>
-  <div v-if="showLogin">
-  <form>
+  <form @submit.prevent="signIn">
     <div class="user-box">
-      <input required="" name="" type="email">
+      <input required v-model="payload.emailAdd"  type="text">
       <label>Email</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="password">
+      <input required v-model="payload.userPass" type="password">
       <label>Password</label>
     </div>
-    <a href="#">
+    <a href="#" type="submit">
       <span></span>
       <span></span>
       <span></span>
@@ -19,241 +18,99 @@
       Submit
     </a>
   </form>
-</div>
-<div v-else>
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">userID</th>
-      <th scope="col">FirstName</th>
-      <th scope="col">LastName</th>
-      <th scope="col">CellphoneNumber</th>
-      <th scope="col">email</th>
-      <th scope="col">UserRole</th>
-      <th scope="col">UserProfiler</th>
-      <th scope="col">JoinDate</th>
-
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">ProdName</th>
-      <th scope="col">ProdDescription</th>
-      <th scope="col">Category</th>
-      <th scope="col">price</th>
-      <th scope="col">prodQuantity</th>
-      <th scope="col">prodImage</th>
-      <th scope="col">userID</th>
-
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
+  <p>Don't have an account? <a href="" class="a2">Sign up!</a></p>
 </div>
 </template>
-<style>
-.login-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  margin: 20px auto;
-  transform: translate(-50%, -55%);
-  background: rgba(0,0,0,.9);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px purple;
-  border-radius: 10px;
-}
 
-.login-box p:first-child {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inconsolata&display=swap');
 
-.login-box .user-box {
-  position: relative;
-}
+body {
+  background: linear-gradient(to bottom, #4b0082, #000000);
+    }
 
-.login-box .user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
-}
+    label{
+      color: black;
+    }
 
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  pointer-events: none;
-  transition: .5s;
-}
+    .login-box {
+      width: 500px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      font-family: 'Fjalla One', sans-serif;
+    }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: purple;
-  font-size: 12px;
-}
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
 
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  font-weight: bold;
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 3px
-}
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-.login-box a:hover {
-  background: #fff;
-  color: #272727;
-  border-radius: 5px;
-}
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-.login-box a span {
-  position: absolute;
-  display: block;
-}
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
 
-.login-box a span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #710865);
-  animation: btn-anim1 1.5s linear infinite;
-}
+    input[type="radio"] {
+      display: inline-block;
+      width: auto;
+    }
 
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4b0082;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-  50%,100% {
-    left: 100%;
-  }
-}
-
-.login-box a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #350878);
-  animation: btn-anim2 1.5s linear infinite;
-  animation-delay: .375s
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-
-  50%,100% {
-    top: 100%;
-  }
-}
-
-.login-box a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #56074e);
-  animation: btn-anim3 1.5s linear infinite;
-  animation-delay: .75s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-
-  50%,100% {
-    right: 100%;
-  }
-}
-
-.login-box a span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #fff);
-  animation: btn-anim4 1.5s linear infinite;
-  animation-delay: 1.125s
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-
-  50%,100% {
-    bottom: 100%;
-  }
-}
-
-.login-box p:last-child {
-  color: #aaa;
-  font-size: 14px;
-}
-
-.login-box a.a2 {
-  color: #fff;
-  text-decoration: none;
-}
-
-.login-box a.a2:hover {
-  background: transparent;
-  color: #aaa;
-  border-radius: 5px;
-}
-</style>
+    .btn:hover {
+      background-color: black;
+    }
+    </style>
 
 <script>
+import { computed } from '@vue/runtime-core'
+import { useStore } from 'vuex'
 export default {
-  data () {
+  setup () {
+    const payload = {
+      emailAdd: '',
+      userPass: ''
+    }
+    const store = useStore()
+    const signIn = () => {
+      store.dispatch('login', payload)
+    }
+    const userMsg =
+    computed(() => store.state.message)
     return {
-      showLogin: true
-      // other data properties
+      payload,
+      userMsg,
+      signIn
     }
-  },
-  methods: {
-    onSubmit () {
-      // handle login form submission here
-      this.showLogin = false // hide login form and show tables
-    }
-    // other methods
   }
 }
 </script>
