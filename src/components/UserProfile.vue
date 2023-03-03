@@ -1,36 +1,48 @@
 <template>
   <div class="container-fluid">
-      <h1>USER CRUD</h1>
+      <h1 class="text-white">USER CRUD</h1>
       <div class="search-bar">
           <input type="text" placeholder="Search User..." />
           <button>Search</button>
         </div>
+        <!-- <div class="card" v-for="prod in products" :key="prod.id" style="width: 18rem;"> -->
       <table class="table table-striped table-hover">
-          <thead class="tableHead text-white">
+          <thead class="tableHead text-black">
               <tr>
+                <th>UserID</th>
                   <th>Name</th>
-
                   <th>Surname</th>
                   <th>Gender</th>
-                  <th>Email Address</th>
                   <th>Cell Number</th>
+                  <th>Email Address</th>
+                  <th>Role</th>
                   <th>User Profile</th>
                   <th>Join Date</th>
                   <th>Edit & Del</th>
               </tr>
           </thead>
           <tbody>
-              <tr v-for="user in addUser" :key="user">
-                  <td>{{ expense.name }}</td>
+            <tr v-for="user in user" :key="user.userID">
+              <th scope="row">{{ user.userID }}</th>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.gender }}</td>
+              <td>{{ user.cellphoneNumber }}</td>
+              <td>{{ user.emailAdd }}</td>
+              <td>{{ user.userRole }}</td>
+              <img :src="user.userProfile" :alt="user.firstName" style="height:10rem ;">
+              <td>{{ user.joinDate }}</td>
+            </tr>
+              <!-- <tr v-for="user in addUser" :key="user">
+                  <td>{{ user.firstName }}</td>
 
-                  <td>R{{ expense.amount }}</td>
+                  <td>{{ user.lastName }}</td>
                   <td><div class="btn-group">
-                   <!-- Button trigger modal -->
+
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editExpenseModal">
 Edit
 </button>
 
-<!-- Modal -->
 <div class="modal fade" id="editExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
@@ -54,14 +66,13 @@ Edit
                       <button class="btn btn-danger">Del</button>
                   </div></td>
               </tr>
+           -->
           </tbody>
       </table>
-      <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#expenseModal">
 ADD USER
 </button>
 
-<!-- Modal -->
 <div class="modal fade" id="expenseModal" tabindex="-1" aria-labelledby="expenseModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
@@ -128,213 +139,183 @@ ADD USER
 </template>
 
 <style scoped>
-.container-fluid{
-padding: 0 10px;
-}
-.login-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  margin: 20px auto;
-  transform: translate(-50%, -55%);
-  background: rgba(0,0,0,.9);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inconsolata&display=swap');
 
-.login-box p:first-child {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.login-box .user-box {
-  position: relative;
-}
-
-.login-box .user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 30px;
+/* .card1 {
+  background-color: #eeeeee;
+  border-radius: 15px;
   border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
-}
+  transition: all 0.3s;
+  /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); */
 
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  pointer-events: none;
-  transition: .5s;
-}
+  .container-fluid {
+    /* margin-top: 3rem;
+    margin-bottom: 3rem; */
+    padding-bottom: 10rem;
+    font-family: 'Fjalla One', sans-serif;
+    background: linear-gradient(to bottom, #4b0082, #000000);
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #fff;
-  font-size: 12px;
-}
+  }
 
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  font-weight: bold;
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 3px
-}
+  .search-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border-radius: 1rem 0 0 1rem;
+    background-color: #4c008225;
+    color: #4b0082;
+  }
 
-.login-box a:hover {
-  background: #fff;
-  color: #272727;
-  border-radius: 5px;
-}
-.login-box a span {
-  position: absolute;
-  display: block;
-}
-.login-box a span:nth-child(1) {
-  top: 0;
-  left: -100%;
+  .search-bar input[type="text"] {
+    padding: 0.5rem;
+  }
+  .search-bar button {
+    padding: 0.5rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+    border: none;
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .tableHead {
+    background-color: rgb(255, 255, 255);
+  }
+  .user-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    padding: 0.625rem 0.75rem;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.3s ease;
+  }
+  .modal-header {
+    border: none;
+  }
+  label{
+      color: black;
+    }
+    .registration-form {
+      width: 500px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      font-family: 'Fjalla One', sans-serif;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: block;
+      margin: auto;
+      width: 10rem;
+      padding: 10px;
+      background-color: #4b0082;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: black;
+    }
+    .table {
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #fff);
-  animation: btn-anim1 1.5s linear infinite;
+  margin-bottom: 1rem;
+  color: #212529;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: white;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
 }
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-
-  50%,100% {
-    left: 100%;
-  }
-}
-.login-box a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #fff);
-  animation: btn-anim2 1.5s linear infinite;
-  animation-delay: .375s
-}
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-
-  50%,100% {
-    top: 100%;
-  }
-}
-.login-box a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #fff);
-  animation: btn-anim3 1.5s linear infinite;
-  animation-delay: .75s
-}
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-
-  50%,100% {
-    right: 100%;
-  }
-}
-.login-box a span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #fff);
-  animation: btn-anim4 1.5s linear infinite;
-  animation-delay: 1.125s
-}
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-
-  50%,100% {
-    bottom: 100%;
-  }
-}
-.login-box p:last-child {
-  color: #aaa;
-  font-size: 14px;
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
 }
 
-.login-box a.a2 {
-  color: #fff;
-  text-decoration: none;
+.table th {
+  font-weight: 600;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #dee2e6;
 }
 
-.login-box a.a2:hover {
-  background: transparent;
-  color: #aaa;
-  border-radius: 5px;
+.table td {
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
 }
-.tableHead{
-  background: linear-gradient(to bottom, #4b0082, #000000) ;
+
+@media (max-width: 767px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table th,
+  .table td {
+    white-space: nowrap;
+  }
+  .table td:before {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  .table td:last-child {
+    border-bottom: 0;
+  }
 }
 </style>
 
 <script>
-import router from '@/router'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   setup () {
-    // eslint-disable-next-line no-undef
-    const store = bStoreURL()
-    const payload = {
-      firstName: '',
-      lastName: '',
-      gender: '',
-      cellphoneNumber: '',
-      emailAdd: '',
-      userPass: '',
-      userRole: '',
-      userProfile: '',
-      joinDate: ''
+    const store = useStore()
+    store.dispatch('showUser')
 
-    }
-    const addUser = () => {
-      store.dispatch('addUser', payload)
-      router.push({ name: 'home' })
-    }
-    // eslint-disable-next-line no-undef
-    const userMessage = computed(() => store.state.message)
+    const user = computed(() => store.state.user)
+    // const activeFilter = ref('all')
 
+    // const filteredProducts = computed(() => {
+    //   if (activeFilter.value === 'all') {
+    //     return products.value
+    //   } else {
+    //     return products.value.filter(product => product.category === activeFilter.value)
+    //   }
+    // })
+    // const filterProducts = (category) => {
+    //   activeFilter.value = category
+    // }
     return {
-      payload,
-      addUser,
-      userMessage
+      user
+      // filteredProducts,
+      // filterProducts,
+      // activeFilter
     }
   }
 }

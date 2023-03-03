@@ -4,9 +4,7 @@
       <section id="home">
           <div class="py-7">
             <div class="col-md-6 col-sm-12 pt-5">
-              <h1 class="animate__animated animate__backInLeft">Unlock a world of unique <br> treasures with every Crystal NFT</h1>
-              <!-- @click="scrollToProduct" -->
-              <!-- <button class="btn1 mt-3" >View NFT's</button> -->
+              <h1 class="animate__animated animate__backInLeft">Unlock a world of unique <br> treasures with every unique NFT</h1>
             </div>
           </div>
           <div class="images col-md-6 col-sm-12">
@@ -95,10 +93,6 @@ h1 {
   padding-top: 150px;
 }
 
-/* .container1 h1 {
-  color: #000000;
-} */
-
 @media screen and (max-width: 767px) {
   .col-md-6 {
     width: 100%;
@@ -107,7 +101,6 @@ h1 {
   .kreeD-Shape {
   height: 400px;
   margin-top: 200px;
-
   /* text-align: center; */
   /* margin-left: 150px; */
 

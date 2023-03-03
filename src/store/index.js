@@ -9,7 +9,8 @@ export default createStore({
     products: null,
     product: null,
     spinner: true,
-    message: null
+    message: null,
+    filteredProducts: null
   },
   getters: {
   },
@@ -31,6 +32,9 @@ export default createStore({
     },
     setMessage (state, values) {
       state.message = values
+    },
+    setFilteredProducts (state, values) {
+      state.filteredProducts = values
     }
   },
   actions: {
@@ -43,6 +47,26 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
+    async searchProducts (context, keyword) {
+      const res = await axios.get(`${bStoreURL}products`)
+      const { results } = await res.data
+      if (results) {
+        const filtered = results.filter(p => p.prodName.toLowerCase().includes(keyword.toLowerCase()))
+        context.commit('setFilteredProducts', filtered)
+      } else {
+        context.commit('setMessage', 'No products found')
+      }
+    },
+    async filterProducts (context, category) {
+      const res = await axios.get(`${bStoreURL}products`)
+      const { results } = await res.data
+      if (results) {
+        const filtered = results.filter(p => p.category === category)
+        context.commit('setFilteredProducts', filtered)
+      } else {
+        context.commit('setMessage', 'No products found')
+      }
+    },
     async registration (context, payload) {
       const res = await axios.post(`${bStoreURL}registration`, payload)
       const { msg, err } = await res.data
@@ -52,13 +76,11 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    async showUser (context, payload) {
-      const res = await axios.get(`${bStoreURL}retrieveUsers`, payload)
-      const { msg, err } = await res.data
-      if (msg) {
-        context.commit('setUser', msg)
-      } else {
-        context.commit('setMessage', err)
+    async showUser (context) {
+      const res = await axios.get(`${bStoreURL}users`)
+      const { results } = await res.data
+      if (results) {
+        context.commit('setUser', results)
       }
     },
     async deleteUser (context, payload) {

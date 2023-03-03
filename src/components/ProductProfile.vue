@@ -1,74 +1,55 @@
 <template>
   <div class="container-fluid">
-      <h1>Product CRUD</h1>
+      <h1 class="text-white"> NFT CRUD</h1>
       <div class="search-bar">
-          <input type="text" placeholder="Search NFT..." />
+          <input type="text" placeholder="Search Product..." />
           <button>Search</button>
         </div>
-        <br>
-      <table class="table table-striped table-hover text-center">
-          <thead class="tableHead text-white">
+        <!-- <div class="card" v-for="prod in products" :key="prod.id" style="width: 18rem;"> -->
+      <table class="table table-striped table-hover">
+          <thead class="tableHead text-black">
               <tr>
-                  <th>Product Name</th>
-
-                  <th>Product Description</th>
+                <th>ProductID</th>
+                  <th>NFT Name</th>
+                  <th>Description</th>
                   <th>Category</th>
-                  <th>Product Quantity</th>
-                  <th>Product Image</th>
-                  <th>Edit & Del</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Image</th>
               </tr>
           </thead>
           <tbody>
-              <tr v-for="expense in userExpense" :key="expense">
+            <tr v-for="prod in products" :key="prod.id">
+              <th scope="row">{{ prod.id }}</th>
+              <td>{{ prod.prodName }}</td>
+              <td>{{ prod.prodDescription }}</td>
+              <td>{{ prod.category }}</td>
+              <td>{{ prod.prodPrice }}</td>
+              <td>{{ prod.Quantity }}</td>
+              <img :src="prod.imgURL" :alt="prodName" style="height:10rem;">
+            </tr>
+              <!-- <tr v-for="user in addUser" :key="user">
+                  <td>{{ user.firstName }}</td>
+
+                  <td>{{ user.lastName }}</td>
                   <td><div class="btn-group">
-                   <!-- Button trigger modal -->
+
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editExpenseModal">
 Edit
 </button>
 
-<!-- Modal -->
-<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Product:</h1>
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Edit This User:</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <form>
-    <div class="user-box">
-      <input required="" name="" type="text">
-      <label>Product Name</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="text">
-      <label>Product Description</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="text">
-      <label>Category</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="decimal">
-      <label>Category</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="number">
-      <label>Product Quantity</label>
-    </div>
-    <div class="user-box">
-      <input required="" name="" type="text">
-      <label>Product Image</label>
-    </div>
+      <input class="form-control text-center newExpenseName" type="text" placeholder="New Name" required>
 
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Submit
-    </a>
-  </form>
+      <input class="form-control text-center newExpenseAmount" type="number" placeholder="New Amount" required>
+
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -80,30 +61,29 @@ Edit
                       <button class="btn btn-danger">Del</button>
                   </div></td>
               </tr>
+           -->
           </tbody>
       </table>
-      <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#expenseModal">
-ADD Product
+ADD PRODUCT
 </button>
 
-<!-- Modal -->
 <div class="modal fade" id="expenseModal" tabindex="-1" aria-labelledby="expenseModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="expenseModalLabel">Add product</h1>
+      <h1 class="modal-title fs-5" id="expenseModalLabel">Add the User</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
       <form>
-    <div class="user-box">
+      <div class="user-box">
       <input required="" name="" type="text">
       <label>Product Name</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="text">
-      <label>Product Description</label>
+      <label>Description</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="text">
@@ -111,17 +91,20 @@ ADD Product
     </div>
     <div class="user-box">
       <input required="" name="" type="decimal">
-      <label>Category</label>
+      <label>Price</label>
     </div>
     <div class="user-box">
       <input required="" name="" type="number">
-      <label>Product Quantity</label>
+      <label>Quantity</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="text">
-      <label>Product Image</label>
+      <input required="" name="" type="number">
+      <label>User Password</label>
     </div>
-
+    <div class="user-box">
+      <input required="" name="" type="number">
+      <label>Image</label>
+    </div>
     <a href="#">
       <span></span>
       <span></span>
@@ -132,8 +115,8 @@ ADD Product
   </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-success" data-bs-dismiss="modal">Save changes</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" v-on:click="addExpense">Save changes</button>
     </div>
   </div>
 </div>
@@ -142,220 +125,183 @@ ADD Product
 </template>
 
 <style scoped>
-.container-fluid{
-padding: 0 10px;
-}
-.login-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  margin: 20px auto;
-  transform: translate(-50%, -55%);
-  background: rgba(0,0,0,.9);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inconsolata&display=swap');
 
-.login-box p:first-child {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.login-box .user-box {
-  position: relative;
-}
-
-.login-box .user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 30px;
+/* .card1 {
+  background-color: #eeeeee;
+  border-radius: 15px;
   border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
-}
+  transition: all 0.3s;
+  /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); */
 
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  pointer-events: none;
-  transition: .5s;
-}
+  .container-fluid {
+    /* margin-top: 3rem;
+    margin-bottom: 3rem; */
+    padding-bottom: 10rem;
+    font-family: 'Fjalla One', sans-serif;
+    background: linear-gradient(to bottom, #4b0082, #000000);
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #fff;
-  font-size: 12px;
-}
+  }
 
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  font-weight: bold;
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 3px
-}
+  .search-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border-radius: 1rem 0 0 1rem;
+    background-color: #4c008225;
+    color: #4b0082;
+  }
 
-.login-box a:hover {
-  background: #fff;
-  color: #272727;
-  border-radius: 5px;
-}
+  .search-bar input[type="text"] {
+    padding: 0.5rem;
+  }
+  .search-bar button {
+    padding: 0.5rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+    border: none;
+    background-color: #000000;
+    color: #ffffff;
+  }
 
-.login-box a span {
-  position: absolute;
-  display: block;
-}
+  .tableHead {
+    background-color: rgb(255, 255, 255);
+  }
+  .user-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    padding: 0.625rem 0.75rem;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.3s ease;
+  }
+  .modal-header {
+    border: none;
+  }
+  label{
+      color: black;
+    }
+    .registration-form {
+      width: 500px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      font-family: 'Fjalla One', sans-serif;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: block;
+      margin: auto;
+      width: 10rem;
+      padding: 10px;
+      background-color: #4b0082;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-.login-box a span:nth-child(1) {
-  top: 0;
-  left: -100%;
+    .btn:hover {
+      background-color: black;
+    }
+    .table {
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #fff);
-  animation: btn-anim1 1.5s linear infinite;
+  margin-bottom: 1rem;
+  color: #212529;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: white;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+}
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
 }
 
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
+.table th {
+  font-weight: 600;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+@media (max-width: 767px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  50%,100% {
-    left: 100%;
+  .table th,
+  .table td {
+    white-space: nowrap;
   }
-}
-
-.login-box a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #fff);
-  animation: btn-anim2 1.5s linear infinite;
-  animation-delay: .375s
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
+  .table td:before {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
   }
-
-  50%,100% {
-    top: 100%;
+  .table td:last-child {
+    border-bottom: 0;
   }
-}
-
-.login-box a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #fff);
-  animation: btn-anim3 1.5s linear infinite;
-  animation-delay: .75s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-
-  50%,100% {
-    right: 100%;
-  }
-}
-
-.login-box a span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #fff);
-  animation: btn-anim4 1.5s linear infinite;
-  animation-delay: 1.125s
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-
-  50%,100% {
-    bottom: 100%;
-  }
-}
-
-.login-box p:last-child {
-  color: #aaa;
-  font-size: 14px;
-}
-
-.login-box a.a2 {
-  color: #fff;
-  text-decoration: none;
-}
-
-.login-box a.a2:hover {
-  background: transparent;
-  color: #aaa;
-  border-radius: 5px;
-}
-.tableHead{
-  background: linear-gradient(to bottom, #4b0082, #000000) ;
 }
 </style>
 
 <script>
-import router from '@/router'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   setup () {
-    // eslint-disable-next-line no-undef
-    const store = bStoreURL()
-    const payload = {
-      prodName: '',
-      ProdDescription: '',
-      category: '',
-      price: '',
-      prodQuantity: '',
-      imgURL: '',
-      userID: ''
-    }
-    const addProduct = () => {
-      store.dispatch('addProduct', payload)
-      router.push({ name: 'home' })
-    }
-    // eslint-disable-next-line no-undef
-    const userMessage = computed(() => store.state.message)
+    const store = useStore()
+    store.dispatch('showProducts')
 
+    const products = computed(() => store.state.products)
+    // const activeFilter = ref('all')
+
+    // const filteredProducts = computed(() => {
+    //   if (activeFilter.value === 'all') {
+    //     return products.value
+    //   } else {
+    //     return products.value.filter(product => product.category === activeFilter.value)
+    //   }
+    // })
+    // const filterProducts = (category) => {
+    //   activeFilter.value = category
+    // }
     return {
-      payload,
-      addProduct,
-      userMessage
+      products
+      // filteredProducts,
+      // filterProducts,
+      // activeFilter
     }
   }
 }

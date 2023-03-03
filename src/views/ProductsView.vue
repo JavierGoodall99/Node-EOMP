@@ -5,64 +5,114 @@
   <div class="wrapper">
     <div id="search-container">
       <div class="col-lg-5 m-auto text-center">
-        <input type="text" id="search-input" placeholder="Search products"><br><br>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search products"
+        /><br /><br />
         <div class="buttons">
-          <button :class="{ active: activeFilter === 'all' }" @click="filterProducts('all')">All</button>
-          <button :class="{ active: activeFilter === 'abstract' }" @click="filterProducts('abstract')">ABSTRACT</button>
-          <button :class="{ active: activeFilter === 'animation' }" @click="filterProducts('animation')">ANIMATION</button>
-          <button :class="{ active: activeFilter === 'crystal' }" @click="filterProducts('crystal')">CRYSTAL</button>
-          <button :class="{ active: activeFilter === 'sunset' }" @click="filterProducts('sunset')">SUNSET</button>
+          <button
+            :class="{ active: activeFilter === 'all' }"
+            @click="filterProducts('all')"
+          >
+            All
+          </button>
+          <button
+            :class="{ active: activeFilter === 'abstract' }"
+            @click="filterProducts('abstract')"
+          >
+            ABSTRACT
+          </button>
+          <button
+            :class="{ active: activeFilter === 'animation' }"
+            @click="filterProducts('animation')"
+          >
+            ANIMATION
+          </button>
+          <button
+            :class="{ active: activeFilter === 'crystal' }"
+            @click="filterProducts('crystal')"
+          >
+            CRYSTAL
+          </button>
+          <button
+            :class="{ active: activeFilter === 'sunset' }"
+            @click="filterProducts('sunset')"
+          >
+            SUNSET
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="card" v-for="prod in products" :key="prod.id" style="width: 18rem;">
-      <img :src="prod.imgURL" class="card-img-top" :alt="prod.name">
+    <div
+      class="card"
+      v-for="prod in products"
+      :key="prod.id"
+      style="width: 18rem"
+    >
+      <img :src="prod.imgURL" class="card-img-top" :alt="prod.name" />
       <div class="card-body">
-        <p class="card-text">{{ prod.description }}</p>
+        <p class="card-text">{{ prod.prodName }}</p>
+        <br />
+        <p class="card-text">{{ prod.prodDescription }}</p>
+        <p class="card-text">{{ prod.category }}</p>
+        <h5 class="card-text">R{{ prod.prodPrice }}</h5>
+        <button @click="viewProduct(prod)">View Product</button>
       </div>
     </div>
   </div>
+  <br />
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   setup () {
     const store = useStore()
     store.dispatch('showProducts')
-
     const products = computed(() => store.state.products)
-    // const activeFilter = ref('all')
+    const activeFilter = ref('all')
+    const selectedProduct = ref(null)
+    const showProduct = ref(false)
+    const filteredProducts = computed(() => {
+      if (activeFilter.value === 'all') {
+        return products.value
+      } else {
+        return products.value.filter(
+          (product) => product.category === activeFilter.value
+        )
+      }
+    })
 
-    // const filteredProducts = computed(() => {
-    //   if (activeFilter.value === 'all') {
-    //     return products.value
-    //   } else {
-    //     return products.value.filter(product => product.category === activeFilter.value)
-    //   }
-    // })
+    const filterProducts = (category) => {
+      activeFilter.value = category
+    }
 
-    // const filterProducts = (category) => {
-    //   activeFilter.value = category
-    // }
+    const viewProduct = (product) => {
+      selectedProduct.value = product
+      showProduct.value = true
+    }
 
     return {
-      products
-      // filteredProducts,
-      // filterProducts,
-      // activeFilter
+      products,
+      filteredProducts,
+      filterProducts,
+      activeFilter,
+      selectedProduct,
+      showProduct,
+      viewProduct
     }
   }
 }
 </script>
-
 <style>
 .wrapper {
   width: 95%;
   margin: 0 auto;
+  background: linear-gradient(to bottom, #dbc9e8, #000000);
 }
 
 #search-container {
@@ -99,19 +149,17 @@ export default {
   align-items: center;
   align-self: center;
 }
-
 .buttons button:hover {
   border: none;
   background-color: #4b0082;
   color: white;
 }
-
 .active {
   background-color: transparent;
   color: #4b0082;
 }
-
 .card {
   margin-top: 2em;
+  display: inline-flex;
 }
 </style>
