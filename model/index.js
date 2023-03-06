@@ -180,7 +180,7 @@ class Product {
   // Fetch all products
   retrieveProducts(req, res) {
     const loginQRY = `SELECT id, prodName, prodDescription, 
-        levels, prodPrice, prodQuantity, imgURL
+        category, prodPrice, prodQuantity, imgURL
         FROM products;`;
     // Run the SQL query
     database.query(loginQRY, (err, results) => {
@@ -192,7 +192,7 @@ class Product {
   // Fetch a specific product using the product id
   retrieveProduct(req, res) {
     const loginQRY = `SELECT id, prodName, prodDescription, 
-        levels, prodPrice, prodQuantity, imgURL
+    category, prodPrice, prodQuantity, imgURL
         FROM products
         WHERE id = ?;`;
     // Run the SQL query with a parameterized query
