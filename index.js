@@ -18,7 +18,7 @@ const {errorHandling} = require('./middleware/errorHandling');
 
 // Add a CORS header to all responses
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
+  res.header('Access-Control-Allow-Origin', 'https://nodejseomp-dc262.web.app/')
   res.header("Access-Control-Allow-Credentials", "true")
   res.header("Access-Control-Allow-Methods", "*")
   res.header("Access-Control-Allow-Headers", "*")
