@@ -16,6 +16,8 @@ const app = express();
 // Import the error handling middleware
 const {errorHandling} = require('./middleware/errorHandling');
 
+const cookieParser = require('cookie-parser');
+
 // Add a CORS header to all responses
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://nodejseomp-dc262.web.app/')
@@ -29,12 +31,13 @@ app.use((req, res, next) => {
 app.use(route);
 
 // Mount the middleware stack on the app
+app.use(route);
 app.use(
-  cors(),
-  express.json(),
-  express.urlencoded({extended: false}),
-  require('cookie-parser')()
-);
+    cors(),
+    cookieParser(),
+    express.json,
+    express.urlencoded({extended: false})
+)
 
 // Start the server
 app.listen(port, () => {
